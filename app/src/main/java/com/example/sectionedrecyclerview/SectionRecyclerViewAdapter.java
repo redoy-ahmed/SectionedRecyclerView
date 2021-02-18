@@ -16,20 +16,21 @@ import java.util.ArrayList;
 public class SectionRecyclerViewAdapter extends RecyclerView.Adapter<SectionRecyclerViewAdapter.SectionViewHolder> {
 
     class SectionViewHolder extends RecyclerView.ViewHolder {
-        private TextView sectionLabel, showAllButton;
-        private RecyclerView itemRecyclerView;
+        private final TextView sectionLabel;
+        private final TextView showAllButton;
+        private final RecyclerView itemRecyclerView;
 
         public SectionViewHolder(View itemView) {
             super(itemView);
-            sectionLabel = (TextView) itemView.findViewById(R.id.section_label);
-            showAllButton = (TextView) itemView.findViewById(R.id.section_show_all_button);
-            itemRecyclerView = (RecyclerView) itemView.findViewById(R.id.item_recycler_view);
+            sectionLabel = itemView.findViewById(R.id.section_label);
+            showAllButton = itemView.findViewById(R.id.section_show_all_button);
+            itemRecyclerView = itemView.findViewById(R.id.item_recycler_view);
         }
     }
 
-    private Context context;
-    private RecyclerViewType recyclerViewType;
-    private ArrayList<SectionModel> sectionModelArrayList;
+    private final Context context;
+    private final RecyclerViewType recyclerViewType;
+    private final ArrayList<SectionModel> sectionModelArrayList;
 
     public SectionRecyclerViewAdapter(Context context, RecyclerViewType recyclerViewType, ArrayList<SectionModel> sectionModelArrayList) {
         this.context = context;

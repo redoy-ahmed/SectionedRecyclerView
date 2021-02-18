@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context="com.sectionedrecyclerviewdemo.MainActivity">
+    tools:context="MainActivity">
 
     <Button
         android:layout_width="match_parent"

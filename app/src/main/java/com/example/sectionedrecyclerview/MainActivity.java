@@ -26,11 +26,6 @@ public class MainActivity extends AppCompatActivity {
         startRecyclerViewActivity(RecyclerViewType.GRID);
     }
 
-    /**
-     * method to start RecyclerViewActivity
-     *
-     * @param recyclerViewType enum type to show recyclerview on basis if button call
-     */
     private void startRecyclerViewActivity(RecyclerViewType recyclerViewType) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(RecyclerViewActivity.RECYCLER_VIEW_TYPE, recyclerViewType);

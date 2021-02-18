@@ -3,6 +3,7 @@ package com.example.sectionedrecyclerview;
 import java.util.ArrayList;
 
 public class SectionModel {
+
     private String sectionLabel;
     private ArrayList<String> itemArrayList;
 

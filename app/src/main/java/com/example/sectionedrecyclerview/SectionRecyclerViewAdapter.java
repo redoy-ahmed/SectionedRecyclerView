@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,19 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class SectionRecyclerViewAdapter extends RecyclerView.Adapter<SectionRecyclerViewAdapter.SectionViewHolder> {
-
-    class SectionViewHolder extends RecyclerView.ViewHolder {
-        private final TextView sectionLabel;
-        private final TextView showAllButton;
-        private final RecyclerView itemRecyclerView;
-
-        public SectionViewHolder(View itemView) {
-            super(itemView);
-            sectionLabel = itemView.findViewById(R.id.section_label);
-            showAllButton = itemView.findViewById(R.id.section_show_all_button);
-            itemRecyclerView = itemView.findViewById(R.id.item_recycler_view);
-        }
-    }
 
     private final Context context;
     private final RecyclerViewType recyclerViewType;
@@ -38,6 +26,7 @@ public class SectionRecyclerViewAdapter extends RecyclerView.Adapter<SectionRecy
         this.sectionModelArrayList = sectionModelArrayList;
     }
 
+    @NonNull
     @Override
     public SectionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.section_custom_row_layout, parent, false);
@@ -68,7 +57,8 @@ public class SectionRecyclerViewAdapter extends RecyclerView.Adapter<SectionRecy
                 holder.itemRecyclerView.setLayoutManager(gridLayoutManager);
                 break;
         }
-        ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(context, sectionModel.getItemArrayList());
+        //ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(context, sectionModel.getItemArrayList());
+        ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(context, sectionModel.getItemArrayList().subList(0, 4));
         holder.itemRecyclerView.setAdapter(adapter);
 
         //show toast on click of show all button
@@ -76,6 +66,8 @@ public class SectionRecyclerViewAdapter extends RecyclerView.Adapter<SectionRecy
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "You clicked on Show All of : " + sectionModel.getSectionLabel(), Toast.LENGTH_SHORT).show();
+                ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(context, sectionModel.getItemArrayList());
+                holder.itemRecyclerView.setAdapter(adapter);
             }
         });
 
@@ -84,5 +76,18 @@ public class SectionRecyclerViewAdapter extends RecyclerView.Adapter<SectionRecy
     @Override
     public int getItemCount() {
         return sectionModelArrayList.size();
+    }
+
+    static class SectionViewHolder extends RecyclerView.ViewHolder {
+        private final TextView sectionLabel;
+        private final TextView showAllButton;
+        private final RecyclerView itemRecyclerView;
+
+        public SectionViewHolder(View itemView) {
+            super(itemView);
+            sectionLabel = itemView.findViewById(R.id.section_label);
+            showAllButton = itemView.findViewById(R.id.section_show_all_button);
+            itemRecyclerView = itemView.findViewById(R.id.item_recycler_view);
+        }
     }
 }

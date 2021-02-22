@@ -57,20 +57,25 @@ public class SectionRecyclerViewAdapter extends RecyclerView.Adapter<SectionRecy
                 holder.itemRecyclerView.setLayoutManager(gridLayoutManager);
                 break;
         }
-        //ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(context, sectionModel.getItemArrayList());
+
         ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(context, sectionModel.getItemArrayList().subList(0, 4));
         holder.itemRecyclerView.setAdapter(adapter);
 
         //show toast on click of show all button
-        holder.showAllButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "You clicked on Show All of : " + sectionModel.getSectionLabel(), Toast.LENGTH_SHORT).show();
-                ItemRecyclerViewAdapter adapter = new ItemRecyclerViewAdapter(context, sectionModel.getItemArrayList());
-                holder.itemRecyclerView.setAdapter(adapter);
-            }
-        });
+        holder.showAllButton.setOnClickListener(v -> {
 
+            ItemRecyclerViewAdapter itemRecyclerViewAdapter;
+            if (sectionModel.isExpanded()) {
+                sectionModel.setExpanded(false);
+                holder.showAllButton.setText(R.string.show_all);
+                itemRecyclerViewAdapter = new ItemRecyclerViewAdapter(context, sectionModel.getItemArrayList().subList(0, 4));
+            } else {
+                sectionModel.setExpanded(true);
+                holder.showAllButton.setText(R.string.show_less);
+                itemRecyclerViewAdapter = new ItemRecyclerViewAdapter(context, sectionModel.getItemArrayList());
+            }
+            holder.itemRecyclerView.setAdapter(itemRecyclerViewAdapter);
+        });
     }
 
     @Override

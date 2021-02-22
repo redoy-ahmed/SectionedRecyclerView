@@ -65,7 +65,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
             }
 
             //add the section and items to array list
-            sectionModelArrayList.add(new SectionModel("Section " + i, itemArrayList));
+            sectionModelArrayList.add(new SectionModel("Section " + i, itemArrayList, false));
         }
 
         SectionRecyclerViewAdapter adapter = new SectionRecyclerViewAdapter(this, recyclerViewType, sectionModelArrayList);

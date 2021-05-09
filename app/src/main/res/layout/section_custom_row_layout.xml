@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,7 +18,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="3"
+        android:weightSum="3.2"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_below="@id/item_recycler_view">
@@ -29,21 +30,16 @@
             android:layout_weight="1"
             android:padding="5dp"
             android:layout_gravity="center_vertical"
-            android:background="#D9DBE3"
-            android:layout_below="@id/item_recycler_view"
-            android:layout_alignBaseline="@id/section_show_all_button">
+            android:background="#D9DBE3">
 
         </View>
 
         <TextView
             android:id="@+id/section_show_all_button"
-            android:drawableEnd="@drawable/arrow_right"
             android:gravity="center_vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_below="@id/item_recycler_view"
-            android:layout_centerInParent="true"
+            android:layout_weight="1.2"
             android:background="@drawable/button_shape"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
@@ -54,7 +50,8 @@
             android:text="@string/show_all"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:drawableEndCompat="@drawable/arrow_right" />
 
         <View
             android:id="@+id/line_row2"
@@ -63,9 +60,7 @@
             android:layout_weight="1"
             android:padding="5dp"
             android:layout_gravity="center_vertical"
-            android:background="#D9DBE3"
-            android:layout_below="@id/item_recycler_view"
-            android:layout_alignBaseline="@id/section_show_all_button">
+            android:background="#D9DBE3">
 
         </View>
 
